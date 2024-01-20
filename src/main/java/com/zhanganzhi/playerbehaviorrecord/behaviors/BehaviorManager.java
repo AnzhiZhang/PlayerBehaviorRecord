@@ -13,14 +13,18 @@ public class BehaviorManager {
     private final ExecutorService executorService;
 
     public BehaviorManager(PlayerBehaviorRecord playerBehaviorRecord) {
+        // base members
         this.playerBehaviorRecord = playerBehaviorRecord;
         this.executorService = Executors.newFixedThreadPool(
                 this.playerBehaviorRecord.getConfigManager().getConfig().getThreadPoolSize(),
                 new ThreadFactoryBuilder().setNameFormat("player-behavior-record-%d").build()
         );
+
+    public void submitRunnable(Runnable runnable) {
+        this.executorService.submit(runnable);
     }
 
     public void collectPlayerLocation(MinecraftServer server) {
-        this.executorService.submit(new PlayerLocationBehavior(this.playerBehaviorRecord, server));
+        this.submitRunnable(new PlayerLocationBehavior(this.playerBehaviorRecord, server));
     }
 }
