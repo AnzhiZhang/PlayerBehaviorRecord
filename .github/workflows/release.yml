@@ -27,7 +27,7 @@ jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     name: Build and Publish
-    depends-on: release-please
+    needs: release-please
     if: ${{ needs.release-please.outputs.release_created }}
 
     steps:
