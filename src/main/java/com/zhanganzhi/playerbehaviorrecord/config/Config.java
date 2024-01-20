@@ -9,7 +9,7 @@ public class Config {
 
     // events config
     private String serverName = "server";
-    private int playerLocationDataPointIntervalMs = 500;
+    private int dataPointIntervalMs = 500;
 
     // kafka config
     private String kafkaBootstrapServers = "localhost:9092";
