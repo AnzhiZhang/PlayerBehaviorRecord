@@ -1,5 +1,6 @@
 package com.zhanganzhi.playerbehaviorrecord.kafka;
 
+import java.time.Duration;
 import java.util.Properties;
 
 import lombok.Getter;
@@ -30,6 +31,6 @@ public class KafkaManager {
     }
 
     public void onStopping() {
-        producer.close();
+        producer.close(Duration.ofSeconds(5));
     }
 }
