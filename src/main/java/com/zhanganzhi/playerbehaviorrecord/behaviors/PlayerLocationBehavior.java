@@ -2,7 +2,6 @@ package com.zhanganzhi.playerbehaviorrecord.behaviors;
 
 import java.time.LocalDateTime;
 
-import com.alibaba.fastjson2.JSON;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.Vec3d;
@@ -62,7 +61,7 @@ public class PlayerLocationBehavior implements Runnable {
                 );
 
                 // send
-                kafkaManager.send(KEY, JSON.toJSONString(playerLocationData));
+                kafkaManager.send(KEY, playerLocationData);
             }
         }
     }
