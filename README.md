@@ -6,10 +6,6 @@
 
 > Record player behavior and send to [kafka](https://kafka.apache.org/).
 
-## Features
-
-- player location
-
 ## Configuration
 
 - `threadPoolSize`: thread pool size, default: `10`
@@ -19,9 +15,15 @@
 - `kafkaReconnectBackoffMaxMs`: kafka reconnect backoff max ms, default: `5000`
 - `kafkaTopic`: kafka topic name, default: `minecraft`
 
-## Data Structure
+## Features
 
-### PlayerLocationData
+### Player Location
+
+Record player location with fixed interval.
+
+Key: `player_location`
+
+Value:
 
 ```json
 {
@@ -33,5 +35,25 @@
   "x": 0.0,
   "y": 0.0,
   "z": 0.0
+}
+```
+
+### Player Activity
+
+Record player login/logout.and online time.
+
+Key: `player_activity`
+
+Value:
+
+```json
+{
+  "time": "2024-01-01T00:00:00.000",
+  "serverName": "server",
+  "playerUUID": "00000000-0000-0000-0000-000000000000",
+  "playerName": "player",
+  "loginAt": "2024-01-01T00:00:00.000",
+  "logoutAt": "2024-01-01T00:00:00.000",
+  "onlineTimeSeconds": 0
 }
 ```
