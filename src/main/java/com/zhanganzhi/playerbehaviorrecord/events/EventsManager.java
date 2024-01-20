@@ -10,9 +10,6 @@ import com.zhanganzhi.playerbehaviorrecord.events.listeners.ServerStoppingEventL
 public class EventsManager {
     public EventsManager(PlayerBehaviorRecord playerBehaviorRecord) {
         ServerLifecycleEvents.SERVER_STOPPING.register(new ServerStoppingEventListener(playerBehaviorRecord));
-        ServerTickEvents.END_SERVER_TICK.register(new EndTickEventListener(
-                playerBehaviorRecord,
-                playerBehaviorRecord.getConfigManager().getConfig().getPlayerLocationDataPointIntervalMs()
-        ));
+        ServerTickEvents.END_SERVER_TICK.register(new EndTickEventListener(playerBehaviorRecord));
     }
 }

@@ -11,9 +11,9 @@ public class EndTickEventListener implements ServerTickEvents.EndTick {
     private long lastTickTime = 0;
     private long lastTickOffset = 0;
 
-    public EndTickEventListener(PlayerBehaviorRecord playerBehaviorRecord, int periodMillis) {
+    public EndTickEventListener(PlayerBehaviorRecord playerBehaviorRecord) {
         this.playerBehaviorRecord = playerBehaviorRecord;
-        this.periodMillis = periodMillis;
+        this.periodMillis = playerBehaviorRecord.getConfigManager().getConfig().getPlayerLocationDataPointIntervalMs();
     }
 
     @Override
