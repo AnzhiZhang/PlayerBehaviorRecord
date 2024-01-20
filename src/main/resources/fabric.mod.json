@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "playerbehaviorrecord",
   "version": "${version}",
-  "name": "PlayerBehaviorRecord",
+  "name": "Player Behavior Record",
   "description": "Record player behavior and send to kafka.",
   "authors": [
     "Andy Zhang"
@@ -12,7 +12,7 @@
     "sources": "https://github.com/AnzhiZhang/PlayerBehaviorRecord"
   },
   "license": "GNU General Public License v3.0",
-  "icon": "assets/playerbehaviorrecord/icon.png",
+  "icon": "assets/playerbehaviorrecord/icon.jpg",
   "environment": "*",
   "entrypoints": {
     "main": [
