@@ -3,7 +3,7 @@ package com.zhanganzhi.playerbehaviorrecord.kafka;
 import java.time.Duration;
 import java.util.Properties;
 
-import lombok.Getter;
+import com.alibaba.fastjson2.JSON;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -13,7 +13,6 @@ import org.apache.logging.log4j.Logger;
 import com.zhanganzhi.playerbehaviorrecord.config.Config;
 import com.zhanganzhi.playerbehaviorrecord.PlayerBehaviorRecord;
 
-@Getter
 public class KafkaManager {
     private static final Logger log = PlayerBehaviorRecord.log;
     private final String topic;
@@ -37,6 +36,10 @@ public class KafkaManager {
 
     public void onStopping() {
         producer.close(Duration.ofSeconds(5));
+    }
+
+    public void send(String key, Record value) {
+        send(key, JSON.toJSONString(value));
     }
 
     public void send(String key, String value) {
