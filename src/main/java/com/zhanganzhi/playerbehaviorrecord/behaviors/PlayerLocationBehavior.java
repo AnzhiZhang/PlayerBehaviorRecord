@@ -13,7 +13,7 @@ import com.zhanganzhi.playerbehaviorrecord.config.Config;
 import com.zhanganzhi.playerbehaviorrecord.PlayerBehaviorRecord;
 
 public class PlayerLocationBehavior implements Runnable {
-    private final static String KEY = "player_location";
+    private static final String KEY = "player_location";
     private final Config config;
     private final KafkaProducer<String, String> producer;
     private final MinecraftServer server;
