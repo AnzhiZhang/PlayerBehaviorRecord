@@ -4,8 +4,7 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 
 import com.zhanganzhi.playerbehaviorrecord.PlayerBehaviorRecord;
-import com.zhanganzhi.playerbehaviorrecord.events.listeners.EndTickEventListener;
-import com.zhanganzhi.playerbehaviorrecord.events.listeners.ServerStoppingEventListener;
+import com.zhanganzhi.playerbehaviorrecord.events.listeners.*;
 
 public class EventsManager {
     public EventsManager(PlayerBehaviorRecord playerBehaviorRecord) {

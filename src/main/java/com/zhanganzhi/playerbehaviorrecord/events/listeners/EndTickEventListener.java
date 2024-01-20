@@ -5,14 +5,13 @@ import net.minecraft.server.MinecraftServer;
 
 import com.zhanganzhi.playerbehaviorrecord.PlayerBehaviorRecord;
 
-public class EndTickEventListener implements ServerTickEvents.EndTick {
-    private final PlayerBehaviorRecord playerBehaviorRecord;
+public class EndTickEventListener extends BaseEventListener implements ServerTickEvents.EndTick {
     private final int periodMillis;
     private long lastTickTime = 0;
     private long lastTickOffset = 0;
 
     public EndTickEventListener(PlayerBehaviorRecord playerBehaviorRecord) {
-        this.playerBehaviorRecord = playerBehaviorRecord;
+        super(playerBehaviorRecord);
         this.periodMillis = playerBehaviorRecord.getConfigManager().getConfig().getDataPointIntervalMs();
     }
 
