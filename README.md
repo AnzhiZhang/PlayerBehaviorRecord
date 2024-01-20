@@ -8,12 +8,39 @@
 
 ## Configuration
 
-- `threadPoolSize`: thread pool size, default: `10`
-- `serverName`: server name, if you need install this mod on multiple servers, this could be used to identify which server the record is from, default: `server`
-- `playerLocationDataPointIntervalMs`: interval of player location data point, default: `500`
-- `kafkaBootstrapServers`: kafka bootstrap servers, default: `localhost:9092`
-- `kafkaReconnectBackoffMaxMs`: kafka reconnect backoff max ms, default: `5000`
-- `kafkaTopic`: kafka topic name, default: `minecraft`
+### `threadPoolSize`
+
+Thread pool size.
+
+Default: `10`
+
+### `serverName`
+
+Server name, if you need install this mod on multiple servers, this could be used to identify which server the record is from.
+
+Default: `server`
+
+### `dataPointIntervalMs`
+
+Interval of data points for periodic record in milliseconds.
+
+Default: `500`
+
+### `kafkaBootstrapServers`
+
+Kafka bootstrap servers.
+
+Default: `localhost:9092`
+
+### `kafkaReconnectBackoffMaxMs`
+
+Kafka reconnect backoff max ms.
+
+Default: `5000`
+
+### `kafkaTopic`
+
+Kafka topic name.
 
 ## Features
 
