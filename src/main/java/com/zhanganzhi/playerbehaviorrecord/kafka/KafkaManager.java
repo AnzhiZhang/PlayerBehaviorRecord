@@ -23,6 +23,7 @@ public class KafkaManager {
         kafkaConfig.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, config.getKafkaBootstrapServers());
         kafkaConfig.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         kafkaConfig.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        kafkaConfig.put(ProducerConfig.RECONNECT_BACKOFF_MAX_MS_CONFIG, config.getKafkaReconnectBackoffMaxMs());
 
         // create producer
         producer = new KafkaProducer<>(kafkaConfig);

@@ -13,5 +13,6 @@ public class Config {
 
     // kafka config
     private String kafkaBootstrapServers = "localhost:9092";
+    private int kafkaReconnectBackoffMaxMs = 5000;
     private String kafkaTopic = "minecraft";
 }
