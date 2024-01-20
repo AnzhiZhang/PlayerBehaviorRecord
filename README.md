@@ -1,7 +1,7 @@
 # Player Behavior Record
 
 [![License](https://shields.io/github/license/AnzhiZhang/PlayerBehaviorRecord?label=License)](https://github.com/AnzhiZhang/PlayerBehaviorRecord/blob/master/LICENSE)
-[![Modrith](https://img.shields.io/modrinth/v/H3USaks7?logo=modrinth&label=Modrinth&color=%2300AF5C)](https://modrinth.com/plugin/player-behavior-record)
+[![Modrith](https://img.shields.io/modrinth/v/ciA0JPWg?logo=modrinth&label=Modrinth&color=%2300AF5C)](https://modrinth.com/plugin/player-behavior-record)
 [![Release](https://shields.io/github/v/release/AnzhiZhang/PlayerBehaviorRecord?display_name=tag&include_prereleases&label=Release)](https://github.com/AnzhiZhang/PlayerBehaviorRecord/releases/latest)
 
 > Record player behavior and send to [kafka](https://kafka.apache.org/).
