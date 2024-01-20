@@ -6,22 +6,21 @@ import java.util.concurrent.ExecutorService;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import net.minecraft.server.MinecraftServer;
 
-import com.zhanganzhi.playerbehaviorrecord.config.Config;
 import com.zhanganzhi.playerbehaviorrecord.PlayerBehaviorRecord;
 
 public class BehaviorManager {
-    private final Config config;
+    private final PlayerBehaviorRecord playerBehaviorRecord;
     private final ExecutorService executorService;
 
     public BehaviorManager(PlayerBehaviorRecord playerBehaviorRecord) {
-        this.config = playerBehaviorRecord.getConfigManager().getConfig();
+        this.playerBehaviorRecord = playerBehaviorRecord;
         this.executorService = Executors.newFixedThreadPool(
-                this.config.getThreadPoolSize(),
+                this.playerBehaviorRecord.getConfigManager().getConfig().getThreadPoolSize(),
                 new ThreadFactoryBuilder().setNameFormat("player-behavior-record-%d").build()
         );
     }
 
     public void collectPlayerLocation(MinecraftServer server) {
-        this.executorService.submit(new PlayerLocationBehavior(this.config, server));
+        this.executorService.submit(new PlayerLocationBehavior(this.playerBehaviorRecord, server));
     }
 }
