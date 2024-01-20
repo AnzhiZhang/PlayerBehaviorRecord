@@ -6,18 +6,15 @@ import com.alibaba.fastjson2.JSON;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.Vec3d;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.logging.log4j.Logger;
 
 import com.zhanganzhi.playerbehaviorrecord.config.Config;
+import com.zhanganzhi.playerbehaviorrecord.kafka.KafkaManager;
 import com.zhanganzhi.playerbehaviorrecord.PlayerBehaviorRecord;
 
 public class PlayerLocationBehavior implements Runnable {
-    private static final Logger log = PlayerBehaviorRecord.log;
     private static final String KEY = "player_location";
     private final Config config;
-    private final KafkaProducer<String, String> producer;
+    private final KafkaManager kafkaManager;
     private final MinecraftServer server;
 
     private record PlayerLocationData(
@@ -34,7 +31,7 @@ public class PlayerLocationBehavior implements Runnable {
 
     public PlayerLocationBehavior(PlayerBehaviorRecord playerBehaviorRecord, MinecraftServer server) {
         this.config = playerBehaviorRecord.getConfigManager().getConfig();
-        this.producer = playerBehaviorRecord.getKafkaManager().getProducer();
+        this.kafkaManager = playerBehaviorRecord.getKafkaManager();
         this.server = server;
     }
 
@@ -43,9 +40,6 @@ public class PlayerLocationBehavior implements Runnable {
         // data
         LocalDateTime now = LocalDateTime.now();
         String serverName = config.getServerName();
-
-        // kafka topic
-        String kafkaTopic = config.getKafkaTopic();
 
         // for each player
         for (ServerPlayerEntity serverPlayerEntity : server.getPlayerManager().getPlayerList()) {
@@ -68,18 +62,7 @@ public class PlayerLocationBehavior implements Runnable {
                 );
 
                 // send
-                producer.send(
-                        new ProducerRecord<>(
-                                kafkaTopic,
-                                KEY,
-                                JSON.toJSONString(playerLocationData)
-                        ),
-                        (metadata, exception) -> {
-                            if (exception != null) {
-                                log.error("Send player location data error.", exception);
-                            }
-                        }
-                );
+                kafkaManager.send(KEY, JSON.toJSONString(playerLocationData));
             }
         }
     }

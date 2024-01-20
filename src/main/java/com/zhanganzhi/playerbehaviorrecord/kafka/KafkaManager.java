@@ -6,18 +6,23 @@ import java.util.Properties;
 import lombok.Getter;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
+import org.apache.logging.log4j.Logger;
 
 import com.zhanganzhi.playerbehaviorrecord.config.Config;
 import com.zhanganzhi.playerbehaviorrecord.PlayerBehaviorRecord;
 
 @Getter
 public class KafkaManager {
+    private static final Logger log = PlayerBehaviorRecord.log;
+    private final String topic;
     private final KafkaProducer<String, String> producer;
 
     public KafkaManager(PlayerBehaviorRecord playerBehaviorRecord) {
         // config
         Config config = playerBehaviorRecord.getConfigManager().getConfig();
+        this.topic = config.getKafkaTopic();
 
         // kafka config
         Properties kafkaConfig = new Properties();
@@ -27,10 +32,21 @@ public class KafkaManager {
         kafkaConfig.put(ProducerConfig.RECONNECT_BACKOFF_MAX_MS_CONFIG, config.getKafkaReconnectBackoffMaxMs());
 
         // create producer
-        producer = new KafkaProducer<>(kafkaConfig);
+        this.producer = new KafkaProducer<>(kafkaConfig);
     }
 
     public void onStopping() {
         producer.close(Duration.ofSeconds(5));
+    }
+
+    public void send(String key, String value) {
+        producer.send(
+                new ProducerRecord<>(topic, key, value),
+                (metadata, exception) -> {
+                    if (exception != null) {
+                        log.error("Send record to kafka failed: {}", exception.getMessage(), exception);
+                    }
+                }
+        );
     }
 }
