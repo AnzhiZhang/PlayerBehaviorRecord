@@ -1,0 +1,75 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    name: Release Please
+
+    outputs:
+      release_created: ${{ steps.release_please.outputs.release_created }}
+      tag_name: ${{ steps.release_please.outputs.tag_name }}
+
+    steps:
+      - name: Release Please
+        uses: google-github-actions/release-please-action@v3
+        id: release_please
+        with:
+          release-type: simple
+          bump-minor-pre-major: true
+          bump-patch-for-minor-pre-major: true
+          pull-request-title-pattern: 'chore${scope}: 🔖 release${component} ${version}'
+
+  build-and-publish:
+    runs-on: ubuntu-latest
+    name: Build and Publish
+    depends-on: release-please
+    if: ${{ needs.release-please.outputs.release_created }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+          cache: gradle
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Generate Latest Changelog
+        run: npx changelogithub --output LATEST_CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Publish
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          version: PlayerBehaviorRecord-${{ github.ref_name }}
+
+          modrinth-id: ciA0JPWg
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+
+          files: |
+            PlayerBehaviorRecord-*.jar
+          changelog-file: LATEST_CHANGELOG.md
+
+          loaders: |
+            fabric
+          game-versions: |
+            [1.16,)
+          game-version-filter: releases
