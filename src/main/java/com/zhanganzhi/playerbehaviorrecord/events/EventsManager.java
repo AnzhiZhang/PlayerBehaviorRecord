@@ -9,7 +9,7 @@ import com.zhanganzhi.playerbehaviorrecord.events.listeners.*;
 
 public class EventsManager {
     public EventsManager(PlayerBehaviorRecord playerBehaviorRecord) {
-        ServerLifecycleEvents.SERVER_STOPPING.register(new ServerStoppingEventListener(playerBehaviorRecord));
+        ServerLifecycleEvents.SERVER_STOPPED.register(new ServerStoppedEventListener(playerBehaviorRecord));
         ServerTickEvents.END_SERVER_TICK.register(new EndTickEventListener(playerBehaviorRecord));
         ServerPlayConnectionEvents.JOIN.register(new ServerPlayConnectionJoinEventListener(playerBehaviorRecord));
         ServerPlayConnectionEvents.DISCONNECT.register(new ServerPlayConnectionDisconnectEventListener(playerBehaviorRecord));

@@ -5,13 +5,13 @@ import net.minecraft.server.MinecraftServer;
 
 import com.zhanganzhi.playerbehaviorrecord.PlayerBehaviorRecord;
 
-public class ServerStoppingEventListener extends BaseEventListener implements ServerLifecycleEvents.ServerStopping {
-    public ServerStoppingEventListener(PlayerBehaviorRecord playerBehaviorRecord) {
+public class ServerStoppedEventListener extends BaseEventListener implements ServerLifecycleEvents.ServerStopped {
+    public ServerStoppedEventListener(PlayerBehaviorRecord playerBehaviorRecord) {
         super(playerBehaviorRecord);
     }
 
     @Override
-    public void onServerStopping(MinecraftServer server) {
-        playerBehaviorRecord.onStopping();
+    public void onServerStopped(MinecraftServer server) {
+        playerBehaviorRecord.onStopped();
     }
 }

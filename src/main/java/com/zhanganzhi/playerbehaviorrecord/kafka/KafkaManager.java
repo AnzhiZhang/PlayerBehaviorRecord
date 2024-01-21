@@ -34,7 +34,7 @@ public class KafkaManager {
         this.producer = new KafkaProducer<>(kafkaConfig);
     }
 
-    public void onStopping() {
+    public void onStopped() {
         producer.close(Duration.ofSeconds(5));
     }
 

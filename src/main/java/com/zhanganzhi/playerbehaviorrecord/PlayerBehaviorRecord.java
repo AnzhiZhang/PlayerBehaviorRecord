@@ -26,8 +26,8 @@ public class PlayerBehaviorRecord implements ModInitializer {
         kafkaManager = new KafkaManager(this);
     }
 
-    public void onStopping() {
-        behaviorManager.onStopping();
-        kafkaManager.onStopping();
+    public void onStopped() {
+        behaviorManager.onStopped();
+        kafkaManager.onStopped();
     }
 }
