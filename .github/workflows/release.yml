@@ -58,6 +58,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
+      - name: Get Semver Name
+        id: semver
+        run: |
+          echo "semver=${${{ needs.release-please.outputs.tag_name }}%v*}"
+          echo "semver=${${{ needs.release-please.outputs.tag_name }}%v*}" >> $GITHUB_ENV
+
       - name: Publish
         uses: Kir-Antipov/mc-publish@v3.3
         with:
@@ -67,7 +73,7 @@ jobs:
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
           files: |
-            build/libs/PlayerBehaviorRecord-*.jar
+            build/libs/PlayerBehaviorRecord-${{ needs.semver.outputs.semver }}.jar
           changelog-file: LATEST_CHANGELOG.md
 
           loaders: |
