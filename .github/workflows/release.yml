@@ -58,6 +58,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
+      - name: Parse Version
+        id: version
+        run: |
+          echo "version=$(echo "${{ needs.release-please.outputs.tag_name }}" | cut -c 2-)"
+          echo "version=$(echo "${{ needs.release-please.outputs.tag_name }}" | cut -c 2-)" >> "$GITHUB_OUTPUT"
+
+      - run: echo "build/libs/PlayerBehaviorRecord-${{ needs.version.outputs.version }}.jar"
+
       - name: Publish
         uses: Kir-Antipov/mc-publish@v3.3
         with:
@@ -67,7 +75,7 @@ jobs:
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
           files: |
-            build/libs/PlayerBehaviorRecord-*.jar
+            build/libs/PlayerBehaviorRecord-${{ needs.version.outputs.version }}.jar
           changelog-file: LATEST_CHANGELOG.md
 
           loaders: |
