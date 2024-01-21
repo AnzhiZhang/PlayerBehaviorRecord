@@ -26,6 +26,10 @@ public class BehaviorManager {
         this.playerActivityBehaviorManager = new PlayerActivityBehaviorManager(this.playerBehaviorRecord);
     }
 
+    public void onStopping() {
+        this.executorService.shutdown();
+    }
+
     public void submitRunnable(Runnable runnable) {
         this.executorService.submit(runnable);
     }
