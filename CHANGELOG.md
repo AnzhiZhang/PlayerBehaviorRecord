@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.0](https://github.com/AnzhiZhang/PlayerBehaviorRecord/compare/v1.0.0...v1.1.0) (2024-01-21)
+
+
+### Features
+
+* ✨ record player activity ([cb45918](https://github.com/AnzhiZhang/PlayerBehaviorRecord/commit/cb459186c26deaaa5a916cb33367ae9daea72e21))
+* ✨ rename config playerLocationDataPointIntervalMs to dataPointIntervalMs ([3957421](https://github.com/AnzhiZhang/PlayerBehaviorRecord/commit/3957421e0f7504b8fd80705f2491db0a487328b8))
+* ✨ update KafkaManager ([4c12c7a](https://github.com/AnzhiZhang/PlayerBehaviorRecord/commit/4c12c7aaa5f835404be71ae100b8d1520149823e))
+* 🔧 set required fabricloader version to &gt;=0.14.0 ([080da6b](https://github.com/AnzhiZhang/PlayerBehaviorRecord/commit/080da6bb74f176270d3b5fb5ea56421508bfd024))
+
 ## 1.0.0 (2024-01-20)
 
 
