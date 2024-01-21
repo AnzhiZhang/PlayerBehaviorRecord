@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/AnzhiZhang/PlayerBehaviorRecord/compare/v1.1.0...v1.1.1) (2024-01-21)
+
+
+### Bug Fixes
+
+* 🐛 shutdown executorService in BehaviorManager on server stopping ([7a51615](https://github.com/AnzhiZhang/PlayerBehaviorRecord/commit/7a5161522395768b3c86136fc12e6e07668d82bf))
+
 ## [1.1.0](https://github.com/AnzhiZhang/PlayerBehaviorRecord/compare/v1.0.0...v1.1.0) (2024-01-21)
 
 
