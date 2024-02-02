@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/AnzhiZhang/PlayerBehaviorRecord/compare/v1.2.0...v1.2.1) (2024-02-02)
+
+
+### Bug Fixes
+
+* 🐛 use Instant to replace LocalDateTime ([f9dd4ba](https://github.com/AnzhiZhang/PlayerBehaviorRecord/commit/f9dd4ba17dcb6758157fa72fdeab4b48394a0fbb))
+
 ## [1.2.0](https://github.com/AnzhiZhang/PlayerBehaviorRecord/compare/v1.1.1...v1.2.0) (2024-02-02)
 
 
