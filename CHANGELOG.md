@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.2.0](https://github.com/AnzhiZhang/PlayerBehaviorRecord/compare/v1.1.1...v1.2.0) (2024-02-02)
+
+
+### Features
+
+* ✨ add loginIP in player_activity ([25f7125](https://github.com/AnzhiZhang/PlayerBehaviorRecord/commit/25f71259b39b9eb7804e00c55c57c46435b7f62d))
+* ✨ set argument of send method to Object in KafkaManager ([c16026f](https://github.com/AnzhiZhang/PlayerBehaviorRecord/commit/c16026f97a7c3c1c40caa27f8d4e5b1fc162873e))
+
+
+### Bug Fixes
+
+* 🐛 check isBot in PlayerActivityBehaviorManager ([52d1f74](https://github.com/AnzhiZhang/PlayerBehaviorRecord/commit/52d1f7472a9350541484e09ca0a00432e4671492))
+* 🐛 fix player login IP source ([8905aa1](https://github.com/AnzhiZhang/PlayerBehaviorRecord/commit/8905aa19ee8e48ffa1d83f6a6080be5b953aae84))
+
 ## [1.1.1](https://github.com/AnzhiZhang/PlayerBehaviorRecord/compare/v1.1.0...v1.1.1) (2024-01-21)
 
 
