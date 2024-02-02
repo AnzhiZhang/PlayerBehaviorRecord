@@ -10,6 +10,7 @@ import lombok.Data;
 import net.minecraft.server.network.ServerPlayerEntity;
 
 import com.zhanganzhi.playerbehaviorrecord.PlayerBehaviorRecord;
+import com.zhanganzhi.playerbehaviorrecord.utils.Utils;
 
 public class PlayerActivityBehaviorManager {
     private static final String KEY = "player_activity";
@@ -34,6 +35,11 @@ public class PlayerActivityBehaviorManager {
     }
 
     public void join(ServerPlayerEntity player) {
+        // only record real player
+        if (Utils.isBot(player)) {
+            return;
+        }
+
         // save data to variable
         String playerUUID = player.getUuidAsString();
         InetSocketAddress address = (InetSocketAddress) player.networkHandler.connection.getAddress();
@@ -53,6 +59,11 @@ public class PlayerActivityBehaviorManager {
     }
 
     public void disconnect(ServerPlayerEntity player) {
+        // only record real player
+        if (Utils.isBot(player)) {
+            return;
+        }
+
         // save data to variable
         String playerUUID = player.getUuidAsString();
         PlayerActivityData playerActivityData = this.playerActivityDataHashMap.get(playerUUID);
