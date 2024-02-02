@@ -77,6 +77,7 @@ Value:
 {
   "time": "2024-01-01T00:00:00.000",
   "serverName": "server",
+  "loginIP": "127.0.0.1",
   "playerUUID": "00000000-0000-0000-0000-000000000000",
   "playerName": "player",
   "loginAt": "2024-01-01T00:00:00.000",
