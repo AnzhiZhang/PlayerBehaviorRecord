@@ -54,11 +54,11 @@ Value:
 
 ```json
 {
-  "time": "2024-01-01T00:00:00.000",
+  "time": "2024-01-01T00:00:00.000Z",
   "serverName": "server",
   "playerUUID": "00000000-0000-0000-0000-000000000000",
   "playerName": "player",
-  "worldName": "world",
+  "worldName": "minecraft:overworld",
   "x": 0.0,
   "y": 0.0,
   "z": 0.0
@@ -75,13 +75,13 @@ Value:
 
 ```json
 {
-  "time": "2024-01-01T00:00:00.000",
+  "time": "2024-01-01T00:00:00.000Z",
   "serverName": "server",
-  "loginIP": "127.0.0.1",
   "playerUUID": "00000000-0000-0000-0000-000000000000",
   "playerName": "player",
-  "loginAt": "2024-01-01T00:00:00.000",
-  "logoutAt": "2024-01-01T00:00:00.000",
+  "loginIP": "127.0.0.1",
+  "loginAt": "2024-01-01T00:00:00.000Z",
+  "logoutAt": "2024-01-01T00:00:00.000Z",
   "onlineTimeSeconds": 0
 }
 ```
