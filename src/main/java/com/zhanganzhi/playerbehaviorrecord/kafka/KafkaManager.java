@@ -38,7 +38,7 @@ public class KafkaManager {
         producer.close(Duration.ofSeconds(5));
     }
 
-    public void send(String key, Record value) {
+    public void send(String key, Object value) {
         send(key, JSON.toJSONString(value));
     }
 
