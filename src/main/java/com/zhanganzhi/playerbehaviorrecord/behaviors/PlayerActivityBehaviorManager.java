@@ -1,5 +1,6 @@
 package com.zhanganzhi.playerbehaviorrecord.behaviors;
 
+import java.net.InetSocketAddress;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -33,8 +34,9 @@ public class PlayerActivityBehaviorManager {
     }
 
     public void join(ServerPlayerEntity player) {
-        // player uuid
+        // save data to variable
         String playerUUID = player.getUuidAsString();
+        InetSocketAddress address = (InetSocketAddress) player.networkHandler.connection.getAddress();
 
         // save data to map
         this.playerActivityDataHashMap.put(
@@ -42,7 +44,7 @@ public class PlayerActivityBehaviorManager {
                 PlayerActivityData
                         .builder()
                         .serverName(this.playerBehaviorRecord.getConfigManager().getConfig().getServerName())
-                        .loginIP(player.networkHandler.getConnection().getAddress().toString())
+                        .loginIP(address.getAddress().getHostAddress())
                         .playerUUID(playerUUID)
                         .playerName(player.getEntityName())
                         .loginAt(LocalDateTime.now())
