@@ -2,7 +2,7 @@ package com.zhanganzhi.playerbehaviorrecord.behaviors;
 
 import java.net.InetSocketAddress;
 import java.time.Duration;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.HashMap;
 
 import lombok.Builder;
@@ -20,13 +20,13 @@ public class PlayerActivityBehaviorManager {
     @Data
     @Builder
     private static class PlayerActivityData {
-        private LocalDateTime time;
+        private Instant time;
         private String serverName;
         private String loginIP;
         private String playerUUID;
         private String playerName;
-        private LocalDateTime loginAt;
-        private LocalDateTime logoutAt;
+        private Instant loginAt;
+        private Instant logoutAt;
         private Long onlineTimeSeconds;
     }
 
@@ -53,7 +53,7 @@ public class PlayerActivityBehaviorManager {
                         .loginIP(address.getAddress().getHostAddress())
                         .playerUUID(playerUUID)
                         .playerName(player.getEntityName())
-                        .loginAt(LocalDateTime.now())
+                        .loginAt(Instant.now())
                         .build()
         );
     }
@@ -67,8 +67,8 @@ public class PlayerActivityBehaviorManager {
         // save data to variable
         String playerUUID = player.getUuidAsString();
         PlayerActivityData playerActivityData = this.playerActivityDataHashMap.get(playerUUID);
-        LocalDateTime loginAt = playerActivityData.getLoginAt();
-        LocalDateTime now = LocalDateTime.now();
+        Instant loginAt = playerActivityData.getLoginAt();
+        Instant now = Instant.now();
 
         // set data
         playerActivityData.setTime(now);

@@ -1,6 +1,6 @@
 package com.zhanganzhi.playerbehaviorrecord.behaviors;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -18,7 +18,7 @@ public class PlayerLocationBehavior implements Runnable {
     private final MinecraftServer server;
 
     private record PlayerLocationData(
-            LocalDateTime time,
+            Instant time,
             String serverName,
             String playerUUID,
             String playerName,
@@ -38,7 +38,7 @@ public class PlayerLocationBehavior implements Runnable {
     @Override
     public void run() {
         // data
-        LocalDateTime now = LocalDateTime.now();
+        Instant now = Instant.now();
         String serverName = config.getServerName();
 
         // for each player
