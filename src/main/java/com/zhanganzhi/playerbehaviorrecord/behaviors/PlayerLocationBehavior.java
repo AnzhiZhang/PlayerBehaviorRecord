@@ -9,6 +9,7 @@ import net.minecraft.util.math.Vec3d;
 import com.zhanganzhi.playerbehaviorrecord.config.Config;
 import com.zhanganzhi.playerbehaviorrecord.kafka.KafkaManager;
 import com.zhanganzhi.playerbehaviorrecord.PlayerBehaviorRecord;
+import com.zhanganzhi.playerbehaviorrecord.utils.Utils;
 
 public class PlayerLocationBehavior implements Runnable {
     private static final String KEY = "player_location";
@@ -42,27 +43,26 @@ public class PlayerLocationBehavior implements Runnable {
 
         // for each player
         for (ServerPlayerEntity serverPlayerEntity : server.getPlayerManager().getPlayerList()) {
-            // get is bot
-            boolean isBot = serverPlayerEntity.networkHandler.connection.getAddress() == null;
-
-            // only record player
-            if (!isBot) {
-                // get data and create object
-                Vec3d pos = serverPlayerEntity.getPos();
-                PlayerLocationData playerLocationData = new PlayerLocationData(
-                        now,
-                        serverName,
-                        serverPlayerEntity.getUuidAsString(),
-                        serverPlayerEntity.getEntityName(),
-                        serverPlayerEntity.getServerWorld().getRegistryKey().getValue().toString(),
-                        pos.x,
-                        pos.y,
-                        pos.z
-                );
-
-                // send
-                kafkaManager.send(KEY, playerLocationData);
+            // only record real player
+            if (Utils.isBot(serverPlayerEntity)) {
+                continue;
             }
+
+            // get data and create object
+            Vec3d pos = serverPlayerEntity.getPos();
+            PlayerLocationData playerLocationData = new PlayerLocationData(
+                    now,
+                    serverName,
+                    serverPlayerEntity.getUuidAsString(),
+                    serverPlayerEntity.getEntityName(),
+                    serverPlayerEntity.getServerWorld().getRegistryKey().getValue().toString(),
+                    pos.x,
+                    pos.y,
+                    pos.z
+            );
+
+            // send
+            kafkaManager.send(KEY, playerLocationData);
         }
     }
 }
