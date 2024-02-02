@@ -22,9 +22,9 @@ public class PlayerActivityBehaviorManager {
     private static class PlayerActivityData {
         private Instant time;
         private String serverName;
-        private String loginIP;
         private String playerUUID;
         private String playerName;
+        private String loginIP;
         private Instant loginAt;
         private Instant logoutAt;
         private Long onlineTimeSeconds;
@@ -50,9 +50,9 @@ public class PlayerActivityBehaviorManager {
                 PlayerActivityData
                         .builder()
                         .serverName(this.playerBehaviorRecord.getConfigManager().getConfig().getServerName())
-                        .loginIP(address.getAddress().getHostAddress())
                         .playerUUID(playerUUID)
                         .playerName(player.getEntityName())
+                        .loginIP(address.getAddress().getHostAddress())
                         .loginAt(Instant.now())
                         .build()
         );
