@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/AnzhiZhang/PlayerBehaviorRecord/compare/v1.2.1...v1.2.2) (2024-02-04)
+
+
+### Bug Fixes
+
+* ✏️ fix onlineDurationSeconds name ([707cd57](https://github.com/AnzhiZhang/PlayerBehaviorRecord/commit/707cd57a9ddf34098aaed5d65c0d020849c71721))
+
 ## [1.2.1](https://github.com/AnzhiZhang/PlayerBehaviorRecord/compare/v1.2.0...v1.2.1) (2024-02-02)
 
 
