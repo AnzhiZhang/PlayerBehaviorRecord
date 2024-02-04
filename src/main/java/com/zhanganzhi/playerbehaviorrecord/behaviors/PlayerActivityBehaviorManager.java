@@ -27,7 +27,7 @@ public class PlayerActivityBehaviorManager {
         private String loginIP;
         private Instant loginAt;
         private Instant logoutAt;
-        private Long onlineTimeSeconds;
+        private Long onlineDurationSeconds;
     }
 
     public PlayerActivityBehaviorManager(PlayerBehaviorRecord playerBehaviorRecord) {
@@ -73,7 +73,7 @@ public class PlayerActivityBehaviorManager {
         // set data
         playerActivityData.setTime(now);
         playerActivityData.setLogoutAt(now);
-        playerActivityData.setOnlineTimeSeconds(Duration.between(loginAt, now).getSeconds());
+        playerActivityData.setOnlineDurationSeconds(Duration.between(loginAt, now).getSeconds());
 
         // clean map
         this.playerActivityDataHashMap.remove(playerUUID);

@@ -82,6 +82,6 @@ Value:
   "loginIP": "127.0.0.1",
   "loginAt": "2024-01-01T00:00:00.000Z",
   "logoutAt": "2024-01-01T00:00:00.000Z",
-  "onlineTimeSeconds": 0
+  "onlineDurationSeconds": 0
 }
 ```
