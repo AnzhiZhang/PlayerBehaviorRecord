@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/AnzhiZhang/PlayerBehaviorRecord/compare/v1.2.2...v1.3.0) (2024-06-02)
+
+
+### Features
+
+* ✨ update PlayerLocationData structure ([d6c5638](https://github.com/AnzhiZhang/PlayerBehaviorRecord/commit/d6c5638b7d54292861ea5b612e5576d73e6ff5be))
+
 ## [1.2.2](https://github.com/AnzhiZhang/PlayerBehaviorRecord/compare/v1.2.1...v1.2.2) (2024-02-04)
 
 
