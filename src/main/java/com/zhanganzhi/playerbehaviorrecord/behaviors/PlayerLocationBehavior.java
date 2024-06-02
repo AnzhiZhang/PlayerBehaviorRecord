@@ -22,7 +22,7 @@ public class PlayerLocationBehavior implements Runnable {
             String serverName,
             String playerUUID,
             String playerName,
-            String worldName,
+            String world,
             Double x,
             Double y,
             Double z

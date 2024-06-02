@@ -58,7 +58,7 @@ Value:
   "serverName": "server",
   "playerUUID": "00000000-0000-0000-0000-000000000000",
   "playerName": "player",
-  "worldName": "minecraft:overworld",
+  "world": "minecraft:overworld",
   "x": 0.0,
   "y": 0.0,
   "z": 0.0
