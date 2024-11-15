@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.4.0](https://github.com/AnzhiZhang/PlayerBehaviorRecord/compare/v1.3.0...v1.4.0) (2024-11-15)
+
+
+### Features
+
+* 🔧 add kafkaLingerMs config ([4d5f403](https://github.com/AnzhiZhang/PlayerBehaviorRecord/commit/4d5f403217caaece759df68eaae7851cf4de8853))
+* 🔧 update default threadPoolSize ([08f1ead](https://github.com/AnzhiZhang/PlayerBehaviorRecord/commit/08f1eadf6501522cb1030df97c898c29e3a646a2))
+
+
+### Bug Fixes
+
+* 🐛 run player disconnect event in thread pool ([919ae31](https://github.com/AnzhiZhang/PlayerBehaviorRecord/commit/919ae316bc6489f259fb1d2bedc4e9afa9f7074c))
+
 ## [1.3.0](https://github.com/AnzhiZhang/PlayerBehaviorRecord/compare/v1.2.2...v1.3.0) (2024-06-02)
 
 
