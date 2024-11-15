@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Config {
     // plugin config
-    private int threadPoolSize = 10;
+    private int threadPoolSize = 4;
 
     // events config
     private String serverName = "server";
