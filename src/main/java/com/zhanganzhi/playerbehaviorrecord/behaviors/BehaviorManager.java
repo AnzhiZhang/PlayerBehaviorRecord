@@ -43,6 +43,6 @@ public class BehaviorManager {
     }
 
     public void playerDisconnect(ServerPlayerEntity player) {
-        this.playerActivityBehaviorManager.disconnect(player);
+        this.submitRunnable(() -> this.playerActivityBehaviorManager.disconnect(player));
     }
 }
